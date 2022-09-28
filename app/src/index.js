@@ -18,6 +18,28 @@ class Counter extends React.Component {
     }
     
 }
+class CustomInput extends React.Component {
+    state = {
+        degrees: 0
+    }
+    render() {
+        return (
+            <div>
+                <input type="number" onChange={this.handleChange}/>
+                <p>{Convert(this.state.degrees)}</p>
+            </div>
+        );
+    }
+    handleChange = (e) => {
+        //update state
+        this.setState({degrees: e.target.value});
+    }
+
+}
+
+function Convert(degrees) {
+    return degrees * 1.8 + 32;
+}
 
 
 
@@ -26,9 +48,11 @@ function Inc() {
     Refresh();
 }
 
+let el = <div><Counter /><CustomInput /></div>
+
 function Refresh() {
     root.render(
-        <Counter />
+        el
     );
 }
 

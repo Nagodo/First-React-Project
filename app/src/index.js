@@ -4,20 +4,23 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let count = 0;
 
-class Counter extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Counter</h1>
-                <p>{count}</p>
-                <button onClick={Inc}>Increment</button>
-            </div>
-        );
-    }
+function Counter () {
+    const [count, setCount] = React.useState(0);
     
+    function Inc() {
+        setCount(count + 1);
+    }
+
+    return (
+        <div>
+            <h1>Counter</h1>
+            <p>{count}</p>
+            <button onClick={Inc}>Increment</button>
+        </div>
+    );
 }
+
 class CustomInput extends React.Component {
     state = {
         degrees: 0
@@ -39,13 +42,6 @@ class CustomInput extends React.Component {
 
 function Convert(degrees) {
     return degrees * 1.8 + 32;
-}
-
-
-
-function Inc() {
-    count++;
-    Refresh();
 }
 
 let el = <div><Counter /><CustomInput /></div>

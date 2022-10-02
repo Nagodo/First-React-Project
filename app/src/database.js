@@ -16,8 +16,5 @@ export class Database {
         return [{name: "Ex1"}, {name: "Ex2"}];
     }
 
-    HasDailyChallenge = () => {
-        return true;
-    }
 
 }

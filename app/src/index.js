@@ -131,8 +131,7 @@ function Strength() {
 }
 
 function Random() {
-    let hasChallenge = database.HasDailyChallenge();
-    let challenges = [];
+    let challenges = [<Challenge name="Nig" />];
 
     function Challenge(props) {
         return (

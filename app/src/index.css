@@ -236,6 +236,15 @@ code {
     top: 2.5vh;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #2374e1;
     overflow: auto;
+}
+
+.content-random .challenges .challenge {
+    width: 100%;
+    height: 8vh;
+    position: relative;
+    background-color: var(--light-gray);
+    display: inline-block;
+    margin-bottom: 1vh;
+    border-radius: 0.5vh;
 }

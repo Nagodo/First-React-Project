@@ -137,7 +137,7 @@ function Random() {
 
     challenges.forEach(element => {
         
-        elements.push(<Challenge key = {element.uid} name = {AllChallenges[element.type].name} amount = {element.amount} status = {element.status} />);
+        elements.push(<Challenge key = {element.uid} uid = {element.uid} name = {AllChallenges[element.type].name} amount = {element.amount} status = {element.status} />);
     });
 
     function Challenge(props) {
@@ -160,11 +160,22 @@ function Random() {
             <p className='challenge-type'>{props.name}</p>
             <div className='challenge-info'>
                 <div className='challenge-amount'><p>Antal: 10000000</p></div>
-                <div className='challenge-amount'><p>100</p></div>
+                <div className='challenge-amount'><p>Status: </p><input type={"number"} onChange = {() => {Save(props.uid)}}></input></div>
             </div>
             <div className='challenge-btn'><i className={btn}></i></div>
         </div>
 
+        let canSave = true;
+        function Save(event) {
+            console.log(event);
+            if (canSave) {
+                canSave = false;
+                setTimeout(() => {
+                    console.log("Save")
+                    canSave = true;
+                }, 2000);
+            }
+        }
 
         return (
             <div className={className}>

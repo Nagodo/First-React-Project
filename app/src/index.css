@@ -28,6 +28,12 @@ code {
     display: none;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .app {
     width: 140vh;
     height: 90vh;
@@ -329,4 +335,19 @@ code {
     font-weight: 400;
     position: relative;
     margin-top: 0.2vh;
+    display: inline-block;
+}
+
+.challenge-amount input {
+    width: 5vh;
+    height: 1.8vh;
+    position: relative;
+    margin-top: 0.1vh;
+    display: inline-block;
+    margin-left: 0.3vh;
+    outline: none;
+    border: none;
+    color: var(--light-icon);
+    font-size: 1.8vh;
+    background-color: transparent;
 }

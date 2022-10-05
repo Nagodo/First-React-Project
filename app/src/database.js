@@ -2,8 +2,8 @@ import data from '../src/data.json';
 
 export class Database {
     constructor() {
-        this.data = data;
-        this.currentProfile = null;
+        this.data = JSON.parse(data);
+        this.currentProfile = "magnus";
     }
 
     GetCurrentUserProfilePic = () => {
@@ -17,6 +17,22 @@ export class Database {
     }
 
     GetCurrentUserChallenges = () => {
-        return [{name: "Challenge1", status: 0, uid: "dwdwfw32r", type: "1", amount: 100}, {name: "Challenge2", status: 1, uid: "dwdwfw33r", type: "1"}, {name: "Challenge3", status: 2, uid: "dwdwfw34r", type: "1"}];
+        let user_id = this.GetUserIdByUserName(this.currentProfile);
+        let challenges = [];
+        for (const [, value] of Object.entries(this.data.data)) {
+            if (value.user_id === user_id) {
+                challenges = value.challenges;
+            }
+        }
+
+        return challenges;
+    }
+
+    GetUserIdByUserName = (username) => {
+        for (const [, value] of Object.entries(this.data.users)) {
+            if (value.username === username) {
+                return value.user_id;
+            }
+        }
     }
 }

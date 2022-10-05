@@ -20,6 +20,7 @@ code {
 
     --light-gray: #242526;
     --light-icon: #b8bbbf;
+    --light-icon-hover: #d8d8d811;
 
 }
 
@@ -240,11 +241,92 @@ code {
 }
 
 .content-random .challenges .challenge {
-    width: 100%;
+    width: 49.2vh;
     height: 8vh;
     position: relative;
     background-color: var(--light-gray);
     display: inline-block;
     margin-bottom: 1vh;
-    border-radius: 0.5vh;
+    border-top-right-radius: 0.8vh;
+    border-bottom-right-radius: 0.8vh;
+}
+
+.content-random .challenges .challenge.red {
+    border-left: 0.4vh solid rgba(255, 0, 0, 0.4); 
+}
+
+.content-random .challenges .challenge.yellow {
+    border-left: 0.4vh solid rgba(255, 255, 0, 0.4); 
+}
+
+.content-random .challenges .challenge.green {
+    border-left: 0.4vh solid rgba(0, 128, 0, 0.4); 
+}
+
+.challenge-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2vh;
+    color: var(--light-icon);
+    width: 4vh;
+    height: 4vh;
+    border-radius: 1vh;
+    background-color: var(--light-icon-hover);
+}
+
+.challenge-btn i {
+    font-size: 2.5vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.challenge-btn:hover {
+    cursor: pointer;
+    background-color: var(--light-icon-hover);
+}
+
+.challenge-type {
+    color: var(--light-icon);
+    font-size: 1.8vh;
+    font-weight: 500;
+    position: relative;
+    left: 1vh;
+    top: -0.5vh;
+    line-height: 1.8vh;
+    width: fit-content;
+    max-width: 30vh;
+    margin-bottom: 0vh;
+}
+
+.challenge-info {
+    position: relative;
+    width: 30vh;
+    height: 3vh;
+    left: 1vh;
+    top: 0.4vh;
+    display: inline-block;
+}
+
+.challenge-amount {
+    background-color: var(--light-icon-hover);
+    position: relative;
+    width: fit-content;
+    height: 3vh;
+    border-radius: 0.4vh;
+    top: 0vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    margin-right: 0.8vh;
+    display: inline-block;
+}
+
+.challenge-amount p {
+    color: var(--light-icon);
+    font-size: 1.8vh;
+    font-weight: 400;
+    position: relative;
+    margin-top: 0.2vh;
 }

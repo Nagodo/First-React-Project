@@ -5,6 +5,7 @@ import { Database } from './database.js';
 import noProfilePic from './noprofilepic.png';
 import { Pages } from './pages.js';
 import { filters } from './filterby.js';
+import { AllChallenges } from './challenges.js';
 // function Counter () {
     //     const [count, setCount] = React.useState(0);
     
@@ -87,7 +88,7 @@ function Strength() {
     let elements = [];
     let filterElements = SetupFilterElements();
     exercises.forEach(element => {
-        elements.push(<Exercise name = {element.name}/>);
+        elements.push(<Exercise key = {element.name} name = {element.name}/>);
     });
 
     function Exercise(props) {
@@ -131,14 +132,43 @@ function Strength() {
 }
 
 function Random() {
-    let challenges = [<Challenge name="Nig" />];
+    let challenges = database.GetCurrentUserChallenges();
+    let elements = [];
+
+    challenges.forEach(element => {
+        
+        elements.push(<Challenge key = {element.uid} name = {AllChallenges[element.type].name} amount = {element.amount} status = {element.status} />);
+    });
 
     function Challenge(props) {
+        let btn = "fa-solid fa-check";
+
+        let className = "challenge";
+        if (props.status === 0) {
+            className += ' red';
+            btn = "fa-solid fa-check"
+
+        } else if (props.status === 1) {
+            className += ' yellow';
+
+        } else if (props.status === 2) {
+            className += ' green';
+            btn = "fa-solid fa-arrows-rotate"
+        }
+
+        let content = <div className='challenge-name'>
+            <p className='challenge-type'>{props.name}</p>
+            <div className='challenge-info'>
+                <div className='challenge-amount'><p>Antal: 10000000</p></div>
+                <div className='challenge-amount'><p>100</p></div>
+            </div>
+            <div className='challenge-btn'><i className={btn}></i></div>
+        </div>
+
+
         return (
-            <div className='challenge'>
-                <div className='challenge-name'>
-                    <p>Challenge Name {props.name}</p>
-                </div>
+            <div className={className}>
+                {content}
             </div>
         );
     }
@@ -146,7 +176,7 @@ function Random() {
     return (
         <div className='content-random'>
             <div className='challenges'>
-                {challenges}
+                {elements}
             </div>
         </div>
     );

@@ -1,9 +1,21 @@
-import data from '../src/data.json';
+import data from './data.json';
+const fileSystem = require("browserify-fs")
 
 export class Database {
     constructor() {
-        this.data = JSON.parse(data);
+        this.data = this.LoadJson();
         this.currentProfile = "magnus";
+    }
+
+    LoadJson() {
+        fileSystem.readFile("./data.json", (err, data) => {
+            if(err) {
+            console.log("File reading failed", err)
+            return
+            }
+            console.log("File data:", data)
+            return data
+        })
     }
 
     GetCurrentUserProfilePic = () => {
@@ -29,7 +41,9 @@ export class Database {
     }
 
     GetUserIdByUserName = (username) => {
-        for (const [, value] of Object.entries(this.data.users)) {
+        console.log("1");
+        for (const [, value] of Object.entries(this.data["users"])) {
+            console.log("2");
             if (value.username === username) {
                 return value.user_id;
             }

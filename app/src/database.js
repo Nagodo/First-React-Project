@@ -1,5 +1,4 @@
 import data from './data.json';
-const fileSystem = require("browserify-fs")
 
 export class Database {
     constructor() {
@@ -8,14 +7,7 @@ export class Database {
     }
 
     LoadJson() {
-        fileSystem.readFile("./data.json", (err, data) => {
-            if(err) {
-            console.log("File reading failed", err)
-            return
-            }
-            console.log("File data:", data)
-            return data
-        })
+        return []
     }
 
     GetCurrentUserProfilePic = () => {

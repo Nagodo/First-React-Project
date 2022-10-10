@@ -2,57 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css' ;
 import { Database } from './database.js';
-import noProfilePic from './noprofilepic.png';
 import { Pages } from './pages.js';
 import { filters } from './filterby.js';
 import { AllChallenges } from './challenges.js';
-// function Counter () {
-    //     const [count, setCount] = React.useState(0);
-    
-    //     function Inc() {
-        //         setCount(count + 1);
-//     }
-
-//     return (
-    //         <div>
-    //             <h1>Counter</h1>
-    //             <p>{count}</p>
-    //             <button onClick={Inc}>Increment</button>
-    //         </div>
-//     );
-// }
-
-// class CustomInput extends React.Component {
-    //     state = {
-//         degrees: 0
-//     }
-//     render() {
-    //         return (
-        //             <div>
-        //                 <input type="number" onChange={this.handleChange}/>
-        //                 <p>{Convert(this.state.degrees)}</p>
-        //             </div>
-        //         );
-        //     }
-        //     handleChange = (e) => {
-            //         //update state
-            //         this.setState({degrees: e.target.value});
-            //     }
-            
-// }
-
-// function Convert(degrees) {
-    //     return degrees * 1.8 + 32;
-    // }
-
-    // let el = <div><Counter /><CustomInput /></div>
-    
-    // function Refresh() {
-        //     root.render(
-            //         el
-            //     );
-            // }
-
 
 let database = null;
 let currentPage = null;
@@ -73,6 +25,10 @@ function Content() {
     let content = null;
     if (currentPage === 'strength') {
         content = <Strength />;
+    } else if (currentPage === 'march') {
+
+    } else if (currentPage === 'running') {
+        
     } else if (currentPage === 'random') {
         content = <Random />;
     }
@@ -198,7 +154,6 @@ function Header() {
     return (
         <div className='header'>
             <NavBar />
-            <CurrentProfile />
         </div>
     )
 }
@@ -247,15 +202,6 @@ function NavElement(props) {
     );
 }
 
-function CurrentProfile() {
-    let CurrentUserProfilePic = database.GetCurrentUserProfilePic();
-    let profilePic = (CurrentUserProfilePic == null) ? noProfilePic : CurrentUserProfilePic;
-    return (
-        <div className='current-profile'>
-            <img src={profilePic} alt="img"></img>
-        </div>
-    );
-}
 
 function SelectPage(page) {
     currentPage = page;
